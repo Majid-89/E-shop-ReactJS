@@ -6,7 +6,7 @@ const Newsletter = () => {
     return (
         <>
             <div className="bg-center bg-no-repeat bg-cover flex justify-center items-center" style={{ backgroundImage: `url(${NewsletterBg})` }} >
-                <div className="py-10 flex flex-col items-center">
+                <div className="py-24 flex flex-col items-center">
                     <p className='uppercase mb-4 text-[rgba(0,0,0,0.5)]'>NewsLetter</p>
                     <h2 className='mb-5 text-[16px] md:text-[22px] font-[500] uppercase px-[30px] text-center'>Sign up for latest updates and offers</h2>
                     <div className="mb-3 flex justify-center items-center">

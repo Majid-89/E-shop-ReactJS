@@ -25,7 +25,7 @@ const Header = () => {
     return (
         <>
             <div className={`bg-black text-white ${scrolled && 'sticky top-0 z-50 w-full  transition-all duration-300'}`}>
-                <div className="max-w-[1040px] mx-auto flex justify-between items-center p-4 px-7 md:px-10">
+                <div className="max-w-[1200px] mx-auto flex justify-between items-center p-4 px-7 md:px-10">
                     <ul className='hidden md:flex gap-4 cursor-pointer  '>
                         <li className='text-white hover:text-yellow-500 duration-300'>Home</li>
                         <li className='text-white hover:text-yellow-500 duration-300 '>About</li>
