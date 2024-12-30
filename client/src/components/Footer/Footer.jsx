@@ -5,6 +5,7 @@ const Footer = () => {
     return (
         <div>
             < Newsletter />
+
         </div>
     )
 }
