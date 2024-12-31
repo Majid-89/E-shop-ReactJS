@@ -15,12 +15,9 @@ const Header = () => {
             setScrolled(false)
         }
     }
-
-
     useEffect(() => {
         window.addEventListener('scroll', handleScroll)
     }, [])
-
 
     return (
         <>
