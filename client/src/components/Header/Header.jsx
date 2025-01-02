@@ -2,10 +2,12 @@ import React, { useEffect, useState } from 'react'
 import { TbSearch } from 'react-icons/tb'
 import { CgShoppingCart } from 'react-icons/cg'
 import { AiOutlineHeart } from 'react-icons/ai'
+import Cart from '../Cart/Cart'
 
 
 const Header = () => {
     const [scrolled, setScrolled] = useState(false)
+    const [cartToggle, setCartToggle] = useState(false)
 
     const handleScroll = () => {
         const offset = window.scrollY
@@ -35,12 +37,13 @@ const Header = () => {
                         <TbSearch />
                         <AiOutlineHeart />
                         <span className='relative'>
-                            <CgShoppingCart />
+                            <CgShoppingCart onClick={() => setCartToggle(!cartToggle)} />
                             <span className='absolute right-[-20px] bg-blue-800 inline-block px-2 py-[2px]  rounded-full top-[-10px] text-xs'>0</span>
                         </span>
                     </div>
                 </div>
             </div>
+            <Cart cartToggle={cartToggle} setCartToggle={setCartToggle} />
         </>
     )
 }
