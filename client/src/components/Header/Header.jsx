@@ -8,7 +8,7 @@ import Search from './Search/Search'
 
 const Header = () => {
     const [scrolled, setScrolled] = useState(false)
-    const [cartToggle, setCartToggle] = useState(false)
+    const [cartToggle, setCartToggle] = useState(true)
     const [searchToggle, setSearchToggle] = useState(true)
 
     const handleScroll = () => {
@@ -36,7 +36,7 @@ const Header = () => {
                         E-<span className='text-yellow-500'>shop</span>
                     </div>
                     <div className="flex gap-4 cursor-pointer text-[20px]">
-                        <TbSearch />
+                        <TbSearch onClick={() => setSearchToggle(!searchToggle)} />
                         <AiOutlineHeart />
                         <span className='relative'>
                             <CgShoppingCart onClick={() => setCartToggle(!cartToggle)} />
