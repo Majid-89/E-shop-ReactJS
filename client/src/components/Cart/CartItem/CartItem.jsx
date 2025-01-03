@@ -1,7 +1,6 @@
 import React from 'react'
 import prod1 from "../../../assets/products/earbuds-prod-1.webp"
 import { MdClose } from 'react-icons/md'
-import { FaCartPlus } from 'react-icons/fa'
 
 const CartItem = () => {
     return (
