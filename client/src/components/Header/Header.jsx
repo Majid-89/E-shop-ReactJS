@@ -3,11 +3,13 @@ import { TbSearch } from 'react-icons/tb'
 import { CgShoppingCart } from 'react-icons/cg'
 import { AiOutlineHeart } from 'react-icons/ai'
 import Cart from '../Cart/Cart'
+import Search from './Search/Search'
 
 
 const Header = () => {
     const [scrolled, setScrolled] = useState(false)
     const [cartToggle, setCartToggle] = useState(false)
+    const [searchToggle, setSearchToggle] = useState(true)
 
     const handleScroll = () => {
         const offset = window.scrollY
@@ -44,6 +46,7 @@ const Header = () => {
                 </div>
             </div>
             <Cart cartToggle={cartToggle} setCartToggle={setCartToggle} />
+            <Search searchToggle={searchToggle} setSearchToggle={setSearchToggle} />
         </>
     )
 }
