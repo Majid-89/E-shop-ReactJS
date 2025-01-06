@@ -31,7 +31,7 @@ const SingleProduct = () => {
 
                     <div className="">
                         <span className='block mb-5'> <span className='text-[18px] font-medium'>Category: </span><span className='leading-5 text-sm mb-12 text-[#6b6b6b]'>HeadPhones</span></span>
-                        <span className='flex text-[18px] font-medium items-center'>Share: <span>
+                        <span className='flex text-[18px] font-medium items-center'>Share : <span>
                             <div className="flex gap-3 cursor-pointer">
                                 <FaFacebookF size={16} />
                                 <FaTwitter size={16} />
