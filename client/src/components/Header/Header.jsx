@@ -39,6 +39,7 @@ const Header = () => {
                         <TbSearch onClick={() => setSearchToggle(!searchToggle)} />
                         <AiOutlineHeart />
                         <span className='relative'>
+                            
                             <CgShoppingCart onClick={() => setCartToggle(!cartToggle)} />
                             <span className='absolute right-[-20px] bg-blue-800 inline-block px-2 py-[2px]  rounded-full top-[-10px] text-xs'>0</span>
                         </span>
@@ -50,7 +51,7 @@ const Header = () => {
         </>
     )
 
-    
+
 }
 
 export default Header
