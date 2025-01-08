@@ -49,6 +49,8 @@ const Header = () => {
             <Search searchToggle={searchToggle} setSearchToggle={setSearchToggle} />
         </>
     )
+
+    
 }
 
 export default Header
