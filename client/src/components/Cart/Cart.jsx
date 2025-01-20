@@ -10,7 +10,7 @@ const Cart = ({ cartToggle, setCartToggle }) => {
                 ${!cartToggle ? 'opacity-100' : 'opacity-0'}`}
             />
             <div
-                className={`bg-white fixed w-[85%] md:w-[27.5%] h-full top-0 right-0 z-50 pt-4 duration-300 transform transition-transform
+                className={`bg-white fixed w-[85%] md:w-[27.5%] h-full top-0 right-0 z-50 pt-4 duration-300 transform transition-transform flex flex-col justify-between
                     ${cartToggle ? 'translate-x-full' : 'translate-x-0'}`}
             >
                 <div className="flex justify-between items-center p-4 border-b-2">
@@ -34,7 +34,7 @@ const Cart = ({ cartToggle, setCartToggle }) => {
                 </div> */}
 
                 {/* Cart Items */}
-                <div className="h-[calc(100%-200px)] overflow-auto">
+                <div className="flex-1">
                     <CartItem />
                 </div>
 
