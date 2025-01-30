@@ -1,9 +1,21 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import Banner from './Banner/Banner'
-import Category from './Category/Category'
+import Category from './Category/Category';
 import Products from '../Prouducts/Products'
+import { fetchDataFromApi } from '../../utils/api';
+
+
 
 const Home = () => {
+
+    useEffect(() => {
+        getCategories()
+    }, [])
+
+    const getCategories = () => {
+        fetchDataFromApi('/api/categories').then((res) => console.log(res))
+
+    }
     return (
         <div>
             <Banner />
