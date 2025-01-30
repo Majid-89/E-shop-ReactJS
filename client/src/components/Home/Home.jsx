@@ -5,7 +5,6 @@ import Products from '../Prouducts/Products'
 import { fetchDataFromApi } from '../../utils/api';
 
 
-
 const Home = () => {
 
     useEffect(() => {
@@ -13,13 +12,12 @@ const Home = () => {
     }, [])
 
     const getCategories = () => {
-        fetchDataFromApi('/api/categories').then((res) => console.log(res))
-
+        fetchDataFromApi('/api/categories?populate=*').then((res) => console.log(res))
     }
     return (
         <div>
             <Banner />
-            <div className="max-w-[1200px] mx-auto w-[95 %] xl:w-full">
+            <div className="max-w-[1200px] mx-auto w-[95%] xl:w-full">
                 <Category />
                 <Products heading={"Popular Products"} />
             </div>
