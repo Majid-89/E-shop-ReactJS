@@ -46,9 +46,11 @@ const Header = () => {
                         <span className="relative">
                             <CgShoppingCart onClick={() => setCartToggle(!cartToggle)} />
 
-                            <span className="absolute right-[-10px] bg-blue-800 text-white inline-block px-2 py-[2px] rounded-full top-[-10px] text-xs">
-                                {totalCartItems || 0}
-                            </span>
+                            {totalCartItems > 0 && (
+                                <span className="absolute right-[-10px] bg-blue-800 text-white inline-block px-1.5 py-[1.5px] rounded-full top-[-10px] text-xs">
+                                    {totalCartItems}
+                                </span>
+                            )}
                         </span>
                     </div>
                 </div>

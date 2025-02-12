@@ -4,6 +4,7 @@ import RelatedProducts from './RelatedProducts/RelatedProducts'
 import useFetch from '../../hooks/useFetch'
 import { useParams } from 'react-router-dom'
 import { Context } from '../../utils/Context'
+import { ToastContainer, toast } from 'react-toastify';
 
 const SingleProduct = () => {
     const { addToCart } = useContext(Context)
@@ -23,6 +24,19 @@ const SingleProduct = () => {
         setQuantity(prevQty => (prevQty > 1 ? prevQty - 1 : 1));
     };
 
+    const handleAddtoCart = () => {
+        addToCart(data?.data?.[0], quantity)
+        toast.success(`Product added to cart!`, {
+            position: "top-right",
+            autoClose: 1000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            theme: "dark",
+        });
+        setQuantity(1)
+    }
     return (
         <div className='w-[95%] md:max-w-[1200px] mx-auto'>
             <div className="w-[95%] md:max-w-[1200px] mx-auto grid grid-cols-1 md:grid-cols-2 gap-3 md:gap-5 my-5 md:my-[75px]">
@@ -51,10 +65,7 @@ const SingleProduct = () => {
                                 +
                             </span>
                         </div>
-                        <button className='flex outline-none text-[16px] items-center justify-center bg-[#8e2de2] text-white px-5 py-2 border-b-[3px] border-[#8e2de2] hover:bg-[#6e1de2] ' onClick={() => {
-                            addToCart(data?.data?.[0], quantity)
-                            setQuantity(1)
-                        }}>
+                        <button className='flex outline-none text-[16px] items-center justify-center bg-[#8e2de2] text-white px-5 py-2 border-b-[3px] border-[#8e2de2] hover:bg-[#6e1de2] ' onClick={handleAddtoCart}>
                             <FaCartPlus size={20} />
                             ADD TO CART
                         </button>
@@ -83,6 +94,7 @@ const SingleProduct = () => {
                 </div>
             </div>
             <RelatedProducts productId={id} categoryId={product.categories[0].id} />
+            <ToastContainer />
         </div>
     )
 }

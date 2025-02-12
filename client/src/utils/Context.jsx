@@ -1,4 +1,5 @@
-import { createContext, useState } from "react";
+import { createContext, useEffect, useState } from "react";
+import { useLocation } from "react-router-dom";
 
 export const Context = createContext();
 
@@ -6,8 +7,12 @@ const AppContext = ({ children }) => {
     const [categories, setCategories] = useState([]);
     const [products, setProducts] = useState([]);
     const [cart, setCart] = useState([]);
+    const location = useLocation();
 
-    // 🛒 Add item to cart
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, [location.pathname]);
+
     const addToCart = (product, quantity = 1) => {
         setCart((prevCart) => {
             const existingItem = prevCart.find((item) => item.id === product.id);
@@ -21,12 +26,10 @@ const AppContext = ({ children }) => {
         });
     };
 
-    // ❌ Remove item from cart
     const removeFromCart = (productId) => {
         setCart((prevCart) => prevCart.filter((item) => item.id !== productId));
     };
 
-    // 🔄 Update item quantity in cart
     const updateCartQuantity = (productId, newQuantity) => {
         setCart((prevCart) =>
             prevCart.map((item) =>
@@ -35,10 +38,8 @@ const AppContext = ({ children }) => {
         );
     };
 
-    // 🔢 Get total number of cart items
     const totalCartItems = cart.reduce((total, item) => total + item.quantity, 0);
 
-    // 💰 Calculate subtotal
     const cartSubtotal = cart.reduce((total, item) => total + item.price * item.quantity, 0).toFixed(2);
 
     return (
