@@ -1,3 +1,4 @@
+
 import React, { useEffect, useState } from 'react'
 import { fetchDataFromApi } from '../utils/api'
 
@@ -7,8 +8,6 @@ const useFetch = (endpoint) => {
     useEffect(() => {
         makeApiCall()
     }, [endpoint])
-
-
 
     const makeApiCall = async () => {
         const res = await fetchDataFromApi(endpoint)
