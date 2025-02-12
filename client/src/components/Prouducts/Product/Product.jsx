@@ -6,7 +6,6 @@ const Product = ({ data, id }) => {
         return <div>Error: Product data is missing.</div>;
     }
 
-    // Ensure img array exists before accessing
     const imageUrl = data.img?.[0]?.url ? import.meta.env.VITE_DEV_URL + data.img[0].url : "/default-image.jpg";
 
     return (
