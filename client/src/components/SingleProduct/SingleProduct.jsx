@@ -2,18 +2,29 @@ import React from 'react'
 import { FaFacebookF, FaTwitter, FaPinterest, FaInstagram, FaLinkedinIn, FaCartPlus } from 'react-icons/fa'
 import Prod from "../../assets/products/earbuds-prod-1.webp"
 import RelatedProducts from './RelatedProducts/RelatedProducts'
+import useFetch from '../../hooks/useFetch'
+import { useParams } from 'react-router-dom'
 
 const SingleProduct = () => {
+    const { id } = useParams()
+    const { data } = useFetch(`/api/products?populate=*&[filters][id]=${id}`)
+    if (!data) return <p>Loading...</p>
+    // console.log(data)
+
+    const product = data?.data?.[0]
+    console.log(product)
+
+    const imageUrl = product.img?.[0]?.url ? import.meta.env.VITE_DEV_URL + product.img[0].url : "/default-image.jpg";
     return (
         <div className='w-[95%] md:max-w-[1200px] mx-auto'>
             <div className="w-[95%] md:max-w-[1200px] mx-auto grid grid-cols-1 md:grid-cols-2 gap-3 md:gap-5  my-5 md:my-[75px]">
-                <div className=" w-full bg-[rgba(0,0,0,0.08)] md:h-[600px] md:w-[600px] ">
-                    <img src={Prod} className='w-full block' alt="" />
+                <div className=" w-full bg-[rgba(0,0,0,0.08)] md:h-[600px] md:w-[600px] rounded-lg ">
+                    <img src={imageUrl} className='w-full block ' alt="" />
                 </div>
                 <div className="flex flex-col pt-5 md:pt-0 md:px-9">
-                    <span className='text-[20px] mb-5 md:text-[24px] leading-7 md:leading-8'>Product Name</span>
-                    <span className='text-[20px] mb-5 md:text-[24px] leading-7 md:leading-8'>Price</span>
-                    <span className='leading-5 text-sm mb-12 text-[#6b6b6b]'>Product Description</span>
+                    <span className='text-[20px] mb-5 md:text-[24px] leading-7 md:leading-8'>{product.title}</span>
+                    <span className='text-[20px] mb-5 md:text-[24px] leading-7 md:leading-8'>{product.price}</span>
+                    <span className='leading-5 text-sm mb-12 text-[#6b6b6b]'>{product.desc}</span>
 
                     <div className="flex items-center">
                         <div className="flex justify-center items-center gap-7 border-[2px] border-[rgba(0,0,0,0.2)]">
@@ -30,7 +41,7 @@ const SingleProduct = () => {
                     <span className='my-5 h-[1px] w-full bg-[rgba(0,0,0,0.1)]'></span>
 
                     <div className="">
-                        <span className='block mb-5'> <span className='text-[18px] font-medium'>Category: </span><span className='leading-5 text-sm mb-12 text-[#6b6b6b]'>HeadPhones</span></span>
+                        <span className='block mb-5'> <span className='text-[18px] font-medium'>Category: </span><span className='leading-5 text-sm mb-12 text-[#6b6b6b]'>{product.categories[0].title}</span></span>
                         <span className='flex text-[18px] font-medium items-center'>Share : <span>
                             <div className="flex gap-3 cursor-pointer">
                                 <FaFacebookF size={16} />
