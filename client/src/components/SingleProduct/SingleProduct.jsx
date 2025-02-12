@@ -8,19 +8,15 @@ const SingleProduct = () => {
     const { id } = useParams()
     const [quantity, setQuantity] = useState(1);
     const { data } = useFetch(`/api/products?populate=*&[filters][id]=${id}`)
-
     if (!data) return <p>Loading...</p>
     const product = data?.data?.[0]
 
     const imageUrl = product?.img?.[0]?.url ? import.meta.env.VITE_DEV_URL + product.img[0].url : "/default-image.jpg";
 
-
-    // Increment function
     const incrementQuantity = () => {
         setQuantity(prevQty => prevQty + 1);
     };
 
-    // Decrement function (ensure quantity does not go below 1)
     const decrementQuantity = () => {
         setQuantity(prevQty => (prevQty > 1 ? prevQty - 1 : 1));
     };
@@ -81,7 +77,7 @@ const SingleProduct = () => {
                     </div>
                 </div>
             </div>
-            <RelatedProducts />
+            <RelatedProducts productId={id} categoryId={product.categories[0].id} />
         </div>
     )
 }
