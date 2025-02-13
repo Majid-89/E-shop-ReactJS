@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { MdClose } from 'react-icons/md';
-import prod1 from "../../../assets/products/earbuds-prod-1.webp"
+import { Link } from 'react-router-dom'
 import useFetch from '../../../hooks/useFetch';
 
 
@@ -41,12 +41,10 @@ const Search = ({ searchToggle, setSearchToggle }) => {
                     onClick={() => setSearchToggle(!searchToggle)}
                 />
             </div>
-
-
             <div className="w-[95%] md:max-w-[800px]  mx-auto my-5 md:my-[30px]">
                 {data?.data?.length > 0 ? (
                     data.data.map((item) => (
-                        <div className="flex border-b-2 gap-3 pb-3 cursor-pointer mb-6" key={item.id}>
+                        <Link to={`/product/${item.id}`} onClick={() => setSearchToggle(!searchToggle)} className="flex border-b-2 gap-3 pb-3 cursor-pointer mb-6" key={item.id}>
                             <div className="w-[60px] h-[60px] bg-[rgba(0,0,0,0.1)] flex justify-center items-center rounded-lg">
                                 <img
                                     src={item?.img?.[0]?.url ? import.meta.env.VITE_DEV_URL + item.img[0].url : "/default-image.jpg"}
@@ -60,7 +58,7 @@ const Search = ({ searchToggle, setSearchToggle }) => {
                                 </span>
                                 <span className="text-gray-500">{item.desc?.slice(0, 100)}...</span>
                             </div>
-                        </div>
+                        </Link>
                     ))
                 ) : (
                     query.length > 0 && (
