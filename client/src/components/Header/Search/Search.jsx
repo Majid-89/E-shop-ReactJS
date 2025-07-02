@@ -3,11 +3,9 @@ import { MdClose } from 'react-icons/md';
 import { Link } from 'react-router-dom'
 import useFetch from '../../../hooks/useFetch';
 
-
 const Search = ({ searchToggle, setSearchToggle }) => {
     const inputRef = useRef(null);
     const [query, setQuery] = useState("")
-
 
     let { data } = useFetch(`/api/products?populate=*&filters[title][$contains]=${query}`)
 
